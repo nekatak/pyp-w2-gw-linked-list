@@ -156,29 +156,60 @@ class LinkedListTestCase(unittest.TestCase):
         self.assertEqual(my_list.count(), 0)
 
     def test_str(self):
-        my_list = LinkedList([1, 2, 3])
-        self.assertEqual(str(my_list), "[1, 2, 3]")
+         my_list = LinkedList([1, 2, 3])
+         self.assertEqual(str(my_list), "[1, 2, 3]")
 
-        my_list = LinkedList()
-        self.assertEqual(str(my_list), "[]")
+         my_list = LinkedList()
+         self.assertEqual(str(my_list), "[]")
 
-        my_list = LinkedList([])
-        self.assertEqual(str(my_list), "[]")
+         my_list = LinkedList([])
+         self.assertEqual(str(my_list), "[]")
 
     def test_add_equals_list(self):
-        my_list = LinkedList()
-        my_list += LinkedList([1, 2])
-        self.assertEqual(my_list, LinkedList([1, 2]))
+         my_list = LinkedList()
+         my_list += LinkedList([1, 2])
+         self.assertEqual(my_list, LinkedList([1, 2]))
 
-        my_list = LinkedList([1, 2])
-        my_list += LinkedList([3, 4])
-        self.assertEqual(my_list, LinkedList([1, 2, 3, 4]))
+         my_list = LinkedList([1, 2])
+         my_list += LinkedList([3, 4])
+         self.assertEqual(my_list, LinkedList([1, 2, 3, 4]))
 
-        my_list = LinkedList([1, 2])
-        my_list += LinkedList()
-        self.assertEqual(my_list, LinkedList([1, 2]))
+         my_list = LinkedList([1, 2])
+         my_list += LinkedList()
+         self.assertEqual(my_list, LinkedList([1, 2]))
 
-        my_list = LinkedList()
-        my_list += LinkedList()
-        self.assertEqual(my_list.count(), 0)
-        self.assertEqual(my_list, LinkedList())
+         my_list = LinkedList()
+         my_list += LinkedList()
+         self.assertEqual(my_list.count(), 0)
+         self.assertEqual(my_list, LinkedList())
+
+    def test_neq_lists(self):
+        my_list = LinkedList([1,2,3])
+        self.assertNotEqual(my_list, LinkedList([1,3,3]))
+        
+        my_list = LinkedList([1,2,3])
+        self.assertNotEqual(my_list, LinkedList([1,2]))
+        
+        my_list = LinkedList([1,2,3])
+        self.assertNotEqual(my_list, LinkedList([]))
+        
+        my_list = LinkedList([1,2])
+        self.assertNotEqual(my_list, LinkedList([1,2,3]))
+        
+        my_list = LinkedList([])
+        self.assertNotEqual(my_list, LinkedList([1,3,3]))
+        
+    def test_len_list(self):
+        my_list = LinkedList([1,2,3])
+        self.assertEqual(len(my_list), 3)
+
+        my_list = LinkedList([])
+        self.assertEqual(len(my_list), 0)
+
+    def test_get_list(self):
+        my_list = LinkedList([1,2,3])
+        self.assertEqual(my_list[0], 1)
+        self.assertEqual(my_list[1], 2)
+        self.assertEqual(my_list[2], 3)
+        self.assertEqual(my_list[3], None) 
+    
