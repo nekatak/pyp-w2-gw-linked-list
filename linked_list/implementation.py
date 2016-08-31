@@ -51,12 +51,17 @@ class LinkedList(AbstractLinkedList):
             counter += 1
 
     def __add__(self, other):
+        new_list = LinkedList()
         for node in other:
-            self.append(node)
-        return self
+            new_list.append(node)
+        for elem in self:
+            new_list.append(elem)
+        return new_list
         
 
     def __iadd__(self, other):
+        if not other.start:
+            return self
         for node in other:
             self.append(node)
         return self
