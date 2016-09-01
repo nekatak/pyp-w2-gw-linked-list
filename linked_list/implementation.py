@@ -32,7 +32,6 @@ class LinkedList(AbstractLinkedList):
 
     def __iter__(self):
         if self.start is None:
-            yield None
             raise StopIteration
         node = None
         while True:
@@ -52,10 +51,10 @@ class LinkedList(AbstractLinkedList):
 
     def __add__(self, other):
         new_list = LinkedList()
-        for node in other:
-            new_list.append(node)
         for elem in self:
             new_list.append(elem)
+        for node in other:
+            new_list.append(node)
         return new_list
         
 
@@ -93,7 +92,7 @@ class LinkedList(AbstractLinkedList):
         if self.end is None:
             self.end = node
             return
-        
+    
         self.end.next = node
         self.end = node
 
@@ -110,7 +109,7 @@ class LinkedList(AbstractLinkedList):
     def pop(self, index=None):
         if self.start is None:
             raise IndexError
-        if index > self.count() -1:
+        if index and index > self.count() -1:
             raise IndexError
         if index is None or index == self.count() - 1:
             prev_end = self.end.elem

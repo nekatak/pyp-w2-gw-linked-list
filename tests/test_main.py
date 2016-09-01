@@ -212,4 +212,16 @@ class LinkedListTestCase(unittest.TestCase):
         self.assertEqual(my_list[1], 2)
         self.assertEqual(my_list[2], 3)
         self.assertEqual(my_list[3], None) 
+        
     
+    def test_node_eq(self):
+        node = Node(2)
+        self.assertEqual(node, Node(2))
+        
+    def test_node_neq(self):
+        node = Node(2)
+        self.assertNotEqual(node, Node(3))
+        
+    def test_node_str(self):
+        node = Node(2)
+        self.assertEqual(str(node), "2")
